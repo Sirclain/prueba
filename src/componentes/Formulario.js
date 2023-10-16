@@ -1,6 +1,10 @@
 import React, { useState } from "react";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
+// import DatePicker from "react-datepicker";
+import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+
 
 function Formulario() {
     const [startDate, setStartDate] = useState(new Date());
@@ -10,7 +14,11 @@ function Formulario() {
 
                 <div className="form-group">
                     <label htmlFor="email">Seleccione Fecha:</label>
-                    <DatePicker label="Basic date picker" className="form-control" id="fecha" name="fecha" />
+                    <LocalizationProvider dateAdapter={AdapterDayjs}>
+                        <DemoContainer components={['DatePicker']}>
+                            <DatePicker label="Basic date picker" />
+                        </DemoContainer>
+                    </LocalizationProvider>
                 </div>
                 <div className="form-group">
                     <label htmlFor="email">Especialidad de Atencion:</label>
